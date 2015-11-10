@@ -1,0 +1,38 @@
+from variables import *
+
+# time can equal anywhere from 0 to 23, 0 being midnight nad 23 being 11pm with 12 being noon
+
+
+def time_of_day(time_now):
+    """This function takes the time variable and returns the boolean night and the sting hour"""
+
+    if 5 <= time_now <= 9:
+        hour = "it's morning."
+        night = False
+        return night, hour
+
+    elif 10 <= time_now <= 15:
+        hour = "It's mid-day."
+        night = False
+        return night, hour
+
+    elif 16 <= time_now <= 19:
+        hour = "It's evening."
+        night = False
+        return night, hour
+
+    elif 20 <= time_now or time_now <= 4:
+        hour = "It's night."
+        night = True
+        return night, hour
+
+
+def time_correction(time_now, day):
+    """This function corrects the time and needs to be called at the beginning of the main loop"""
+    if time_now >= 24:
+        time_now -= 24
+        day += 1
+        return time_now, day
+    else:
+        time_now = time_now
+        return time_now, day
